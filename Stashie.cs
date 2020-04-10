@@ -154,6 +154,7 @@ namespace Stashie
                 "//Redeemer\r\n" +
                 "//Warlord\r\n" +
                 "//blightedMap\r\n" +
+                "//elderGuardianMap\r\n" +
                 "/////////////////////////////////////////////////////////////\r\n" +
                 "////////////\tAvailable operations:\t/////////////////////\r\n" + 
                 "/////////\tString (name) operations:\r\n" +
