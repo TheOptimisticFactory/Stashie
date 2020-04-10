@@ -37,6 +37,7 @@ namespace Stashie
         public bool isInfluenced { get; }
         public bool Synthesised { get; }
         public bool isBlightMap { get; }
+        public bool isElderGuardianMap { get; }
         public Vector2 clientRect { get; }
 
         public ItemData(NormalInventoryItem inventoryItem, BaseItemType baseItemType)
@@ -61,6 +62,7 @@ namespace Stashie
             Fractured = mods?.CountFractured ?? 0;
             Synthesised = mods?.Synthesised ?? false;
             isBlightMap = mods?.ItemMods.Where(m => m.Name.Contains("InfectedMap")).Count() > 0;
+            isElderGuardianMap = mods?.ItemMods.Where(m => m.Name.Contains("MapElderContainsBoss")).Count() > 0;
 
             var sockets = item.GetComponent<Sockets>();
             NumberOfSockets = sockets?.NumberOfSockets ?? 0;
