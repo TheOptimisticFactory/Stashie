@@ -44,7 +44,6 @@ namespace Stashie
         private const string PARAMETER_ISWARLORD = "Warlord";
         private const string PARAMETER_ISSYNTHESISED = "Synthesised";
         private const string PARAMETER_ISBLIGHTEDMAP = "blightedMap";
-        private const string PARAMETER_ISELDERGUARDIANMAP = "elderGuardianMap";
 
         //Operations
         private const string OPERATION_NONEQUALITY = "!=";
@@ -213,12 +212,6 @@ namespace Stashie
             {
                 var blightedMapCommand = new BlightedMapFilter { isBlightMap = command[0] != SYMBOL_NOT };
                 newFilter.Filters.Add(blightedMapCommand);
-                return true;
-            }
-            if (command.Contains(PARAMETER_ISELDERGUARDIANMAP))
-            {
-                var elderGuardianMapCommand = new ElderGuardianMapFilter { isElderGuardianMap = command[0] != SYMBOL_NOT };
-                newFilter.Filters.Add(elderGuardianMapCommand);
                 return true;
             }
             /*
