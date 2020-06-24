@@ -154,6 +154,7 @@ namespace Stashie
                 "//Redeemer\r\n" +
                 "//Warlord\r\n" +
                 "//blightedMap\r\n" +
+                "//elderGuardianMap\r\n" +
                 "/////////////////////////////////////////////////////////////\r\n" +
                 "////////////\tAvailable operations:\t/////////////////////\r\n" + 
                 "/////////\tString (name) operations:\r\n" +
@@ -178,7 +179,7 @@ namespace Stashie
                 "Essences:\t\t\tBaseName^Essence|BaseName^Remnant,ClassName=StackableCurrency:Default Tabs\r\n" +
                 "Fragments:\t\t\tClassName=MapFragment|BaseName^Splinter,ClassName=StackableCurrency|ClassName=LabyrinthMapItem|BaseName^Scarab\t:Default Tabs\r\n" +
                 "Maps:\t\t\tClassName=Map,!blightedMap\t\t\t:Default Tabs\r\n" +
-                "Fossils/Resonators:\t\t\tpath^CurrencyDelveCrafting | path^DelveStackableSocketableCurrency\t:Default Tabs\r\n" +
+                "Fossils/Resonators:\t\t\tpath^CurrencyDelveCrafting | path^DelveStackableSocketableCurrency\t:Default Tabs" +
                 "Gems:\t\t\t\tClassName^Skill Gem,ItemQuality=0\t\t\t:Default Tabs\r\n" +
                 "6-Socket:\t\t\tnumberofsockets=6,numberoflinks!=6\t\t\t:Default Tabs\r\n" +
                 "Prophecies:\t\t\tPath^CurrencyItemisedProphecy\t\t\t:Default Tabs\r\n" +
