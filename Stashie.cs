@@ -657,6 +657,8 @@ namespace Stashie
             coroutineIteration++;
             
             yield return DropItemsToStash();
+
+            PublishEvent("stashie_stop_drop_items", null);
         }
 
         private IEnumerator DropItemsToStash()
@@ -822,8 +824,6 @@ namespace Stashie
                 Input.KeyUp(Keys.LControlKey);
                 yield return ParseItems();
             }
-
-            PublishEvent("stashie_stop_drop_items", null);
         }
 
         #region Refill
