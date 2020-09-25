@@ -21,6 +21,7 @@ namespace Stashie
         private const string PARAMETER_PATH = "path";
         private const string PARAMETER_NAME = "name";
         private const string PARAMETER_DESCRIPTION = "desc";
+        private const string PARAMETER_CLUSTERJEWELBASE = "clusterjewelbase";
 
         //Number compare
         private const string PARAMETER_QUALITY = "itemquality";
@@ -31,6 +32,7 @@ namespace Stashie
         private const string PARAMETER_LARGEST_LINK_SIZE = "numberoflinks";
         private const string PARAMETER_VEILED = "veiled";
         private const string PARAMETER_FRACTUREDMODS = "fractured";
+        private const string PARAMTER_CLUSTERJEWELPASSIVES = "clusterjewelpassives";
 
         //Boolean
         private const string PARAMETER_IDENTIFIED = "identified";
@@ -258,6 +260,10 @@ namespace Stashie
                 case PARAMETER_DESCRIPTION:
                     stringComp.StringParameter = data => data.Description;
                     break;
+                    /*
+                case PARAMETER_CLUSTERJEWELBASE:
+                    stringComp.StringParameter = data => data.ClusterJewelBase;
+                    break;*/
                 case PARAMETER_RARITY:
                     stringComp.StringParameter = data => data.Rarity.ToString();
                     break;
@@ -296,7 +302,13 @@ namespace Stashie
                     stringComp.CompareInt = int.Parse(value);
                     stringComp.StringParameter = data => data.Fractured.ToString();
                     break;
-                
+                    /*
+                case PARAMTER_CLUSTERJEWELPASSIVES:
+                    stringComp.IntParameter = data => data.ClusterJewelpassives;
+                    stringComp.CompareInt = int.Parse(value);
+                    stringComp.StringParameter = data => data.ClusterJewelpassives.ToString();
+                    break;*/
+
 
                 default:
                     DebugWindow.LogMsg($"Filter parser: Parameter is not defined in code: {parameter}", 10);
