@@ -340,3 +340,6 @@ ASALocalRun/
 healthchecksdb
 /.gitignore.branch.master
 /.gitignore.branch.private_project_structure
+
+# KDiff3
+*.orig
