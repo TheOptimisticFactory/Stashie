@@ -225,7 +225,7 @@ namespace Stashie
                 "Essences:\t\t\tBaseName^Essence|BaseName^Remnant,ClassName=StackableCurrency:Default Tabs\r\n" +
                 "Fragments:\t\t\tClassName=MapFragment|BaseName^Splinter,ClassName=StackableCurrency|ClassName=LabyrinthMapItem|BaseName^Scarab\t:Default Tabs\r\n" +
                 "Maps:\t\t\tClassName=Map,!blightedMap\t\t\t:Default Tabs\r\n" +
-                "Fossils/Resonators:\t\t\tpath^CurrencyDelveCrafting | path^DelveStackableSocketableCurrency\t:Default Tabs" +
+                "Fossils/Resonators:\t\t\tpath^CurrencyDelveCrafting | path^DelveStackableSocketableCurrency\t:Default Tabs\r\n" +
                 "Gems:\t\t\t\tClassName^Skill Gem,ItemQuality=0\t\t\t:Default Tabs\r\n" +
                 "6-Socket:\t\t\tnumberofsockets=6,numberoflinks!=6\t\t\t:Default Tabs\r\n" +
                 "Prophecies:\t\t\tPath^CurrencyItemisedProphecy\t\t\t:Default Tabs\r\n" +
@@ -373,6 +373,9 @@ namespace Stashie
 
         private void GenerateMenu()
         {
+            var font = GameController.Settings.CoreSettings.Font.Value;
+            var fontSize = int.Parse(font.Substring(font.Length - 2));
+
             _stashTabNamesByIndex = _renamedAllStashNames.ToArray();
 
             _filterTabs = null;
@@ -391,7 +394,7 @@ namespace Stashie
                             ImGui.SetColumnWidth(0, 300);
                             ImGui.SetColumnWidth(1, 160);
 
-                            if (ImGui.Button(formattableString, new System.Numerics.Vector2(180, 20)))
+                            if (ImGui.Button(formattableString, new System.Numerics.Vector2(180, fontSize + 7)))
                                 ImGui.OpenPopup(formattableString);
 
                             ImGui.SameLine();
@@ -422,7 +425,7 @@ namespace Stashie
                             {
                                 x++;
 
-                                if (ImGui.Button($"{name}", new System.Numerics.Vector2(100, 20)))
+                                if (ImGui.Button($"{name}", new System.Numerics.Vector2(100, fontSize + 7)))
                                 {
                                     indexNode.Value = name;
                                     OnSettingsStashNameChanged(indexNode, name);
@@ -435,7 +438,7 @@ namespace Stashie
 
                             ImGui.Spacing();
                             ImGuiNative.igIndent(350);
-                            if (ImGui.Button("Close", new System.Numerics.Vector2(100, 20)))
+                            if (ImGui.Button("Close", new System.Numerics.Vector2(180, fontSize + 7)))
                                 ImGui.CloseCurrentPopup();
 
                             ImGui.EndPopup();
