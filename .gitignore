@@ -11,3 +11,6 @@ packages/
 bin/
 Stashie.sln.DotSettings.user
 Stashie.csproj.user
+
+# KDiff3
+*.orig
