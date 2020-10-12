@@ -48,11 +48,6 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Newtonsoft.Json.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="SharpDX, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\SharpDX.4.2.0\lib\net45\SharpDX.dll</HintPath>
       <Private>False</Private>
@@ -83,10 +78,6 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include=".gitignore" />
-    <Content Include="GitUpdateConfig.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="FilterParameterCompare.cs" />
     <Compile Include="FilterParser.cs" />
     <Compile Include="FilterResult.cs" />
@@ -111,45 +102,6 @@
     <Compile Include="Refill.cs" />
     <Compile Include="Stashie.cs" />
     <Compile Include="StashieSettings.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include=".git\config" />
-    <None Include=".git\description" />
-    <None Include=".git\HEAD" />
-    <None Include=".git\hooks\applypatch-msg.sample" />
-    <None Include=".git\hooks\commit-msg.sample" />
-    <None Include=".git\hooks\fsmonitor-watchman.sample" />
-    <None Include=".git\hooks\post-update.sample" />
-    <None Include=".git\hooks\pre-applypatch.sample" />
-    <None Include=".git\hooks\pre-commit.sample" />
-    <None Include=".git\hooks\pre-merge-commit.sample" />
-    <None Include=".git\hooks\pre-push.sample" />
-    <None Include=".git\hooks\pre-rebase.sample" />
-    <None Include=".git\hooks\pre-receive.sample" />
-    <None Include=".git\hooks\prepare-commit-msg.sample" />
-    <None Include=".git\hooks\update.sample" />
-    <None Include=".git\index" />
-    <None Include=".git\info\exclude" />
-    <None Include=".git\logs\HEAD" />
-    <None Include=".git\logs\refs\heads\master" />
-    <None Include=".git\logs\refs\remotes\origin\HEAD" />
-    <None Include=".git\objects\pack\pack-50e4881b7dba9eb80774fa09d3fddd222b00a9cc.idx" />
-    <None Include=".git\objects\pack\pack-50e4881b7dba9eb80774fa09d3fddd222b00a9cc.pack" />
-    <None Include=".git\packed-refs" />
-    <None Include=".git\refs\heads\master" />
-    <None Include=".git\refs\remotes\origin\HEAD" />
-    <None Include=".vs\ProjectSettings.json" />
-    <None Include=".vs\slnx.sqlite" />
-    <None Include=".vs\Stashie\v16\.suo" />
-    <None Include=".vs\VSWorkspaceState.json" />
-    <None Include="packages.config" />
-    <None Include="README.md" />
-    <None Include="Stashie.csproj.DotSettings" />
-    <None Include="_config.yml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include=".git\objects\info\" />
-    <Folder Include=".git\refs\tags\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
   <ProjectExtensions>
