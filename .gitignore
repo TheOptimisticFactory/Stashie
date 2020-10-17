@@ -12,6 +12,7 @@ bin/
 Stashie.sln.DotSettings.user
 Stashie.csproj.DotSettings
 Stashie.csproj.user
+.idea/
 
 # KDiff3
 *.orig
