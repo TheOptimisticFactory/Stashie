@@ -32,7 +32,6 @@ namespace Stashie
         private readonly WaitTime _wait3Ms = new WaitTime(3);
         private Vector2 _clickWindowOffset;
         private List<CustomFilter> _customFiltersPrimary;
-        private List<CustomFilter> _customFiltersSecondary;
         private List<RefillProcessor> _customRefills;
         private List<FilterResult> _dropItems;
         private List<ListIndexNode> _settingsListNodes;
@@ -44,7 +43,6 @@ namespace Stashie
         private int _visibleStashIndex = -1;
         private const int MaxShownSidebarStashTabs = 31;
         private int _stashCount;
-        private NormalInventoryItem lastHoverItem;
         private bool secondaryFilterActive = false;
 
         public StashieCore()
