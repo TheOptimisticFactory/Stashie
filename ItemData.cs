@@ -1,4 +1,5 @@
-﻿using ExileCore.PoEMemory.Components;
+﻿using System;
+using ExileCore.PoEMemory.Components;
 using ExileCore.PoEMemory.Elements.InventoryElements;
 using ExileCore.PoEMemory.Models;
 using ExileCore.Shared.Enums;
@@ -110,23 +111,30 @@ namespace Stashie
             Description = "";
             MapTier = item.HasComponent<Map>() ? item.GetComponent<Map>().Tier : 0;
             clientRect = InventoryItem.GetClientRect().Center;
-            
-            if (@baseComponent.Name == "Prophecy")
+
+            try
             {
-                var @prophParse = item.GetComponent<Prophecy>();
-                ProphecyName = @prophParse.DatProphecy.Name.ToLower();
-                ProphecyName = ProphecyName.Replace(" ", "");
-                ProphecyName = ProphecyName.Replace(",", "");
-                ProphecyName = ProphecyName.Replace("'", "");
-                ProphecyDescription = @prophParse.DatProphecy.PredictionText.ToLower();
-                ProphecyDescription = ProphecyDescription.Replace(" ", "");
-                ProphecyDescription = ProphecyDescription.Replace(",", "");
-                ProphecyDescription = ProphecyDescription.Replace("'", "");
-                Description = ProphecyDescription;
-                Name = ProphecyName;
-                BaseName = "Prophecy";
+                if (@baseComponent.Name == "Prophecy")
+                {
+                    var @prophParse = item.GetComponent<Prophecy>();
+                    ProphecyName = @prophParse.DatProphecy.Name.ToLower();
+                    ProphecyName = ProphecyName.Replace(" ", "");
+                    ProphecyName = ProphecyName.Replace(",", "");
+                    ProphecyName = ProphecyName.Replace("'", "");
+                    ProphecyDescription = @prophParse.DatProphecy.PredictionText.ToLower();
+                    ProphecyDescription = ProphecyDescription.Replace(" ", "");
+                    ProphecyDescription = ProphecyDescription.Replace(",", "");
+                    ProphecyDescription = ProphecyDescription.Replace("'", "");
+                    Description = ProphecyDescription;
+                    Name = ProphecyName;
+                    BaseName = "Prophecy";
+                }
+                else
+                {
+                    Name = mods?.UniqueName ?? "";
+                }
             }
-            else
+            catch (Exception)
             {
                 Name = mods?.UniqueName ?? "";
             }
