@@ -1334,7 +1334,8 @@ namespace Stashie
                 for (var index = 0; index < realNames.Count; ++index)
                 {
                     var cachedName = cachedNames[index + 1];
-                    if (cachedName.Equals(realNames[index])) continue;
+                    if (cachedName != null && cachedName.Equals(realNames[index])) 
+                        continue;
 
                     UpdateStashNames(realNames);
                     break;
