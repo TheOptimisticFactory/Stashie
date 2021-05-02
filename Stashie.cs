@@ -490,21 +490,24 @@ namespace Stashie
 
         public override Job Tick()
         {
-            if(Core.ParallelRunner.FindByName("Stashie_DropItemsToStash") == null)
+            try
             {
-                if (Settings.SwitchFilterhotkey.PressedOnce())
+                if (Core.ParallelRunner.FindByName("Stashie_DropItemsToStash") == null)
                 {
-                    secondaryFilterActive = !secondaryFilterActive;
-                    SetupOrClose();
-                    LogMessage($"Stashie: Currently active Filter: {(!secondaryFilterActive ? "primary" : "secondary")}",5);
+                    if (Settings.SwitchFilterhotkey.PressedOnce())
+                    {
+                        secondaryFilterActive = !secondaryFilterActive;
+                        SetupOrClose();
+                        LogMessage($"Stashie: Currently active Filter: {(!secondaryFilterActive ? "primary" : "secondary")}", 5);
+                    }
+                }
+                if (!stashingRequirementsMet() && Core.ParallelRunner.FindByName("Stashie_DropItemsToStash") != null)
+                {
+                    StopCoroutine("Stashie_DropItemsToStash");
+                    return null;
                 }
             }
-            if (!stashingRequirementsMet() && Core.ParallelRunner.FindByName("Stashie_DropItemsToStash") != null)
-            {
-                StopCoroutine("Stashie_DropItemsToStash");
-                return null;
-            }
-            
+            catch (Exception e) { if (Settings.Debug) throw e; }
             if (Settings.DropHotkey.PressedOnce())
             {
                 if(Core.ParallelRunner.FindByName("Stashie_DropItemsToStash") == null)

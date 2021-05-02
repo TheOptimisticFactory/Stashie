@@ -16,6 +16,7 @@ namespace Stashie
         public StashieSettings()
         {
             Enable = new ToggleNode(false);
+            Debug = new ToggleNode(false);
             DropHotkey = Keys.F3;
             SwitchFilterhotkey = Keys.F4;
             ExtraDelay = new RangeNode<int>(0, 0, 2000);
@@ -66,6 +67,7 @@ namespace Stashie
 
 
         public ToggleNode Enable { get; set; }
+        public ToggleNode Debug { get; set; }
 
         public int[,] IgnoredCells { get; set; } =
         {
