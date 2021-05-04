@@ -116,6 +116,7 @@ namespace Stashie
             SetupOrClose();
 
             Input.RegisterKey(Settings.DropHotkey);
+            Input.RegisterKey(Settings.SwitchFilterhotkey);
 
             Settings.DropHotkey.OnValueChanged += () => { Input.RegisterKey(Settings.DropHotkey); };
             Settings.SwitchFilterhotkey.OnValueChanged += () => { Input.RegisterKey(Settings.SwitchFilterhotkey); };
