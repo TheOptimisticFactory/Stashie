@@ -1,4 +1,5 @@
-﻿using ExileCore.PoEMemory.Components;
+using System;
+using ExileCore.PoEMemory.Components;
 using ExileCore.PoEMemory.Elements.InventoryElements;
 using ExileCore.PoEMemory.Models;
 using ExileCore.Shared.Enums;
@@ -100,7 +101,7 @@ namespace Stashie
             Description = "";
             MapTier = item.GetComponent<Map>()?.Tier ?? 0;
             clientRect = InventoryItem.GetClientRect().Center;
-            
+
             if (Name == "Prophecy")
             {
                 BaseName = "Prophecy";
