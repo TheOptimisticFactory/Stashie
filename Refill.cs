@@ -37,7 +37,9 @@ namespace Stashie
 
                 if (nameIndex == -1)
                 {
-                    DebugWindow.LogMsg($"Refill parser: Can't find refill name in line: {configLine}. Name should have \":\" divider.", 10);
+                    DebugWindow.LogMsg(
+                        $"Refill parser: Can't find refill name in line: {configLine}. Name should have \":\" divider.",
+                        10);
                     continue;
                 }
 

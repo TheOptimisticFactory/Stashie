@@ -22,7 +22,6 @@ namespace Stashie
     {
         private const string StashTabsNameChecker = "Stash Tabs Name Checker";
         private const string FiltersConfigFilePrimary = "FiltersConfig.txt";
-        private const string FiltersConfigFileSecondary = "FiltersConfig2.txt";
         private const int WhileDelay = 5;
         private const int InputDelay = 15;
         private const string CoroutineName = "Drop To Stash";
@@ -32,7 +31,6 @@ namespace Stashie
         private readonly WaitTime _wait3Ms = new WaitTime(3);
         private Vector2 _clickWindowOffset;
         private List<CustomFilter> _customFiltersPrimary;
-        private List<CustomFilter> _customFiltersSecondary;
         private List<RefillProcessor> _customRefills;
         private List<FilterResult> _dropItems;
         private List<ListIndexNode> _settingsListNodes;
@@ -45,7 +43,6 @@ namespace Stashie
         private const int MaxShownSidebarStashTabs = 31;
         private int _stashCount;
         private NormalInventoryItem lastHoverItem;
-        private bool secondaryFilterActive = false;
 
         public StashieCore()
         {
@@ -54,10 +51,7 @@ namespace Stashie
 
         public override void ReceiveEvent(string eventId, object args)
         {
-            if (!Settings.Enable.Value)
-            {
-                return;
-            }
+            if (!Settings.Enable.Value) return;
 
             switch (eventId)
             {
@@ -118,7 +112,6 @@ namespace Stashie
             Input.RegisterKey(Settings.DropHotkey);
 
             Settings.DropHotkey.OnValueChanged += () => { Input.RegisterKey(Settings.DropHotkey); };
-            Settings.SwitchFilterhotkey.OnValueChanged += () => { Input.RegisterKey(Settings.SwitchFilterhotkey); };
             _stashCount = (int) GameController.Game.IngameState.IngameUi.StashElement.TotalStashes;
 
             return true;
@@ -129,14 +122,14 @@ namespace Stashie
             if (_stashTabNamesCoroutine == null) return;
             if (_stashTabNamesCoroutine.Running)
             {
-                if(!area.IsHideout && !area.IsTown && 
-                    !area.DisplayName.Contains("Azurite Mine") && 
+                if (!area.IsHideout && !area.IsTown &&
+                    !area.DisplayName.Contains("Azurite Mine") &&
                     !area.DisplayName.Contains("Tane's Laboratory"))
                     _stashTabNamesCoroutine?.Pause();
             }
             else
             {
-                if (area.IsHideout || 
+                if (area.IsHideout ||
                     area.IsTown ||
                     area.DisplayName.Contains("Azurite Mine") ||
                     area.DisplayName.Contains("Tane's Laboratory"))
@@ -297,12 +290,8 @@ namespace Stashie
 
         private void LoadCustomFilters()
         {
-            string filter = FiltersConfigFilePrimary;
-            if (secondaryFilterActive) 
-            {
-                filter = FiltersConfigFileSecondary;
-            }
-            
+            var filter = FiltersConfigFilePrimary;
+
             var filterFilePath = Path.Combine(DirectoryFullName, filter);
             var filterLines = File.ReadAllLines(filterFilePath);
             _customFiltersPrimary = FilterParser.Parse(filterLines);
@@ -489,32 +478,20 @@ namespace Stashie
 
         public override Job Tick()
         {
-            if(Core.ParallelRunner.FindByName("Stashie_DropItemsToStash") == null)
-            {
-                if (Settings.SwitchFilterhotkey.PressedOnce())
-                {
-                    secondaryFilterActive = !secondaryFilterActive;
-                    SetupOrClose();
-                    LogMessage($"Stashie: Currently active Filter: {(!secondaryFilterActive ? "primary" : "secondary")}",5);
-                }
-            }
             if (!stashingRequirementsMet() && Core.ParallelRunner.FindByName("Stashie_DropItemsToStash") != null)
             {
                 StopCoroutine("Stashie_DropItemsToStash");
                 return null;
             }
-            
+
             if (Settings.DropHotkey.PressedOnce())
             {
-                if(Core.ParallelRunner.FindByName("Stashie_DropItemsToStash") == null)
-                {
+                if (Core.ParallelRunner.FindByName("Stashie_DropItemsToStash") == null)
                     StartDropItemsToStashCoroutine();
-                }
                 else
-                {
                     StopCoroutine("Stashie_DropItemsToStash");
-                }
             }
+
             return null;
         }
 
@@ -533,32 +510,30 @@ namespace Stashie
             _debugTimer.Reset();
             CleanUp();
         }
+
         private IEnumerator DropToStashRoutine()
         {
             var cursorPosPreMoving = Input.ForceMousePosition; //saving cursorposition
             //try stashing items 3 times
             var originTab = GetIndexOfCurrentVisibleTab();
             yield return ParseItems();
-            for (int tries = 0; tries < 3 && _dropItems.Count > 0; ++tries)
+            for (var tries = 0; tries < 3 && _dropItems.Count > 0; ++tries)
             {
                 if (_dropItems.Count > 0)
                     yield return StashItemsIncrementer();
                 yield return ParseItems();
                 yield return new WaitTime(Settings.ExtraDelay);
             }
+
             //yield return ProcessRefills(); currently bugged
             if (Settings.VisitTabWhenDone.Value)
             {
                 if (Settings.BackToOriginalTab.Value)
-                {
                     yield return SwitchToTab(originTab);
-                }
                 else
-                {
                     yield return SwitchToTab(Settings.TabToVisitWhenDone.Value);
-                }
-            } 
-                
+            }
+
 
             //restoring cursorposition
             Input.SetCursorPos(cursorPosPreMoving);
@@ -575,7 +550,7 @@ namespace Stashie
         private bool stashingRequirementsMet()
         {
             return GameController.Game.IngameState.IngameUi.InventoryPanel.IsVisible &&
-                    GameController.Game.IngameState.IngameUi.StashElement.IsVisibleLocal;
+                   GameController.Game.IngameState.IngameUi.StashElement.IsVisibleLocal;
         }
 
         private IEnumerator ProcessInventoryItems()
@@ -584,7 +559,7 @@ namespace Stashie
             yield return ParseItems();
 
             var cursorPosPreMoving = Input.ForceMousePosition;
-            if (_dropItems.Count > 0) 
+            if (_dropItems.Count > 0)
                 yield return StashItemsIncrementer();
 
             yield return ProcessRefills();
@@ -614,7 +589,8 @@ namespace Stashie
             var inventory = GameController.Game.IngameState.IngameUi.InventoryPanel[InventoryIndex.PlayerInventory];
             var invItems = inventory.VisibleInventoryItems;
 
-            yield return new WaitFunctionTimed(() => invItems != null,true,500, "Player inventory->VisibleInventoryItems is null!");
+            yield return new WaitFunctionTimed(() => invItems != null, true, 500,
+                "Player inventory->VisibleInventoryItems is null!");
             _dropItems = new List<FilterResult>();
             _clickWindowOffset = GameController.Window.GetWindowRectangle().TopLeft;
             foreach (var invItem in invItems)
@@ -649,7 +625,6 @@ namespace Stashie
         private FilterResult CheckFilters(ItemData itemData)
         {
             foreach (var filter in _customFiltersPrimary)
-            {
                 try
                 {
                     if (!filter.AllowProcess) continue;
@@ -660,7 +635,7 @@ namespace Stashie
                 {
                     DebugWindow.LogError($"Check filters error: {ex}");
                 }
-            }
+
             return null;
         }
 
@@ -670,6 +645,7 @@ namespace Stashie
 
             yield return StashItems();
         }
+
         private IEnumerator StashItems()
         {
             PublishEvent("stashie_start_drop_items", null);
@@ -680,12 +656,15 @@ namespace Stashie
                 LogMessage($"Stshie: VisibleStashIndex was invalid: {_visibleStashIndex}, stopping.");
                 yield break;
             }
-            var itemsSortedByStash = _dropItems.OrderBy(x => x.SkipSwitchTab || x.StashIndex == _visibleStashIndex ? 0 : 1).ThenBy(x => x.StashIndex).ToList();
+
+            var itemsSortedByStash = _dropItems
+                .OrderBy(x => x.SkipSwitchTab || x.StashIndex == _visibleStashIndex ? 0 : 1).ThenBy(x => x.StashIndex)
+                .ToList();
             var waitedItems = new List<FilterResult>(8);
 
             Input.KeyDown(Keys.LControlKey);
             LogMessage($"Want to drop {itemsSortedByStash.Count} items.");
-            foreach(var stashresult in itemsSortedByStash)
+            foreach (var stashresult in itemsSortedByStash)
             {
                 _coroutineIteration++;
                 _coroutineWorker?.UpdateTicks(_coroutineIteration);
@@ -718,13 +697,17 @@ namespace Stashie
                     }
                     yield return new WaitTime((int)GameController.IngameState.CurLatency); //maybe replace with Setting option
                 }*/
-                yield return new WaitFunctionTimed(() => GameController.IngameState.IngameUi.StashElement.AllInventories[_visibleStashIndex] != null, 
-                    true, 2000, $"Error while loading tab, Index: {_visibleStashIndex}"); //maybe replace waittime with Setting option
-                yield return new WaitFunctionTimed(() => GetTypeOfCurrentVisibleStash() != InventoryType.InvalidInventory,
-                    true, 2000, $"Error with inventory type, Index: {_visibleStashIndex}"); //maybe replace waittime with Setting option
+                yield return new WaitFunctionTimed(
+                    () => GameController.IngameState.IngameUi.StashElement.AllInventories[_visibleStashIndex] != null,
+                    true, 2000,
+                    $"Error while loading tab, Index: {_visibleStashIndex}"); //maybe replace waittime with Setting option
+                yield return new WaitFunctionTimed(
+                    () => GetTypeOfCurrentVisibleStash() != InventoryType.InvalidInventory,
+                    true, 2000,
+                    $"Error with inventory type, Index: {_visibleStashIndex}"); //maybe replace waittime with Setting option
 
                 yield return StashItem(stashresult);
-                
+
                 _debugTimer.Restart();
                 PublishEvent("stashie_finish_drop_items_to_stash_tab", null);
             }
@@ -766,20 +749,19 @@ namespace Stashie
            */
             //finally press the button
             //additional shift to circumvent affinities
-            bool shiftused = false;
+            var shiftused = false;
             if (stashresult.ShiftForStashing)
             {
                 Input.KeyDown(Keys.ShiftKey);
                 shiftused = true;
             }
+
             Input.Click(MouseButtons.Left);
-            if (shiftused)
-            {
-                Input.KeyUp(Keys.ShiftKey);
-            }
-           
+            if (shiftused) Input.KeyUp(Keys.ShiftKey);
+
             yield return new WaitTime(Settings.StashItemDelay);
         }
+
         #region Refill
 
         private IEnumerator ProcessRefills()
@@ -1054,10 +1036,7 @@ namespace Stashie
 
         private IEnumerator SwitchToTabViaArrowKeys(int tabIndex, int numberOfTries = 1)
         {
-            if (numberOfTries >= 3)
-            {
-                yield break;
-            }
+            if (numberOfTries >= 3) yield break;
 
             var indexOfCurrentVisibleTab = GetIndexOfCurrentVisibleTab();
             var travelDistance = tabIndex - indexOfCurrentVisibleTab;
@@ -1065,13 +1044,9 @@ namespace Stashie
             travelDistance = Math.Abs(travelDistance);
 
             if (tabIsToTheLeft)
-            {
                 yield return PressKey(Keys.Left, travelDistance);
-            }
             else
-            {
                 yield return PressKey(Keys.Right, travelDistance);
-            }
 
             if (GetIndexOfCurrentVisibleTab() != tabIndex)
             {
@@ -1082,10 +1057,7 @@ namespace Stashie
 
         private IEnumerator PressKey(Keys key, int repetitions = 1)
         {
-            for (var i = 0; i < repetitions; i++)
-            {
-                yield return Input.KeyPress(key);
-            }
+            for (var i = 0; i < repetitions; i++) yield return Input.KeyPress(key);
         }
 
         private bool DropDownMenuIsVisible()
@@ -1097,10 +1069,7 @@ namespace Stashie
         {
             var button = GameController.Game.IngameState.IngameUi.StashElement.ViewAllStashButton.GetClientRect();
             yield return ClickElement(button.Center);
-            while (!DropDownMenuIsVisible())
-            {
-                yield return Delay(1);
-            }
+            while (!DropDownMenuIsVisible()) yield return Delay(1);
         }
 
         private static bool StashLabelIsClickable(int index)
@@ -1134,7 +1103,7 @@ namespace Stashie
             {
                 var clicks = _stashCount - MaxShownSidebarStashTabs;
                 yield return Delay(3);
-                VerticalScroll(scrollUp: clickable, clicks: clicks);
+                VerticalScroll(clickable, clicks);
                 yield return Delay(3);
             }
 
@@ -1166,10 +1135,7 @@ namespace Stashie
 
         private IEnumerator SwitchToTabViaDropdownMenu(int tabIndex)
         {
-            if (!DropDownMenuIsVisible())
-            {
-                yield return OpenDropDownMenu();
-            }
+            if (!DropDownMenuIsVisible()) yield return OpenDropDownMenu();
 
             yield return ClickDropDownMenuStashTabLabel(tabIndex);
         }

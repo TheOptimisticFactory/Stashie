@@ -149,13 +149,9 @@ namespace Stashie
                 }
 
                 if (!filterErrorParse)
-                {
                     allFilters.Add(newFilter);
-                }
                 else
-                {
                     DebugWindow.LogMsg($"Line: {i + 1}", 5, Color.Red);
-                }
             }
 
             return allFilters;
@@ -166,16 +162,18 @@ namespace Stashie
             command = command.Trim();
             if (command.Contains(PARAMETER_AFFINITYACTIVE))
             {
-                var affinityActiveCommand = new AffinityActiveFilter { BAffinityActive = command[0] != SYMBOL_NOT };
+                var affinityActiveCommand = new AffinityActiveFilter {BAffinityActive = command[0] != SYMBOL_NOT};
                 newFilter.Filters.Add(affinityActiveCommand);
                 return true;
             }
+
             if (command.Contains(PARAMETER_IGNOREAFFINITY))
             {
-                var affinityIgnoreCommand = new AffinityIgnoreFilter { BAffinityIgnore = command[0] != SYMBOL_NOT };
+                var affinityIgnoreCommand = new AffinityIgnoreFilter {BAffinityIgnore = command[0] != SYMBOL_NOT};
                 newFilter.Filters.Add(affinityIgnoreCommand);
                 return true;
             }
+
             if (command.Contains(PARAMETER_IDENTIFIED))
             {
                 var identCommand = new IdentifiedItemFilter {BIdentified = command[0] != SYMBOL_NOT};
