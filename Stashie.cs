@@ -15,6 +15,7 @@ using ExileCore.Shared.Nodes;
 using ImGuiNET;
 using SharpDX;
 using Vector4 = System.Numerics.Vector4;
+// ReSharper disable StringLiteralTypo
 
 namespace Stashie
 {
@@ -179,92 +180,132 @@ namespace Stashie
 
                 #region default config String
 
-                "//FilterName(menu name):\tfilters\t\t:ParentMenu(optionally, will be created automatically for grouping)\r\n" +
-                "//Filter parts should divided by coma or | (for OR operation(any filter part can pass))\r\n" +
-                "\r\n" +
-                "////////////\tAvailable properties:\t/////////////////////\r\n" +
-                "/////////\tString (name) properties:\r\n" +
-                "//classname\r\n" +
-                "//basename\r\n" +
-                "//path\r\n" +
-                "/////////\tNumerical properties:\r\n" +
-                "//itemquality\r\n" +
-                "//rarity\r\n" +
-                "//ilvl\r\n" +
-                "//tier\r\n" +
-                "//numberofsockets\r\n" +
-                "//numberoflinks\r\n" +
-                "//veiled\r\n" +
-                "//fractured\r\n" +
-                "/////////\tBoolean properties:\r\n" +
-                "//identified\r\n" +
-                "//fractured\r\n" +
-                "//corrupted\r\n" +
-                "//influenced\r\n" +
-                "//Elder\r\n" +
-                "//Shaper\r\n" +
-                "//Crusader\r\n" +
-                "//Hunter\r\n" +
-                "//Redeemer\r\n" +
-                "//Warlord\r\n" +
-                "//blightedMap\r\n" +
-                "//elderGuardianMap\r\n" +
-                "/////////////////////////////////////////////////////////////\r\n" +
-                "////////////\tAvailable operations:\t/////////////////////\r\n" +
-                "/////////\tString (name) operations:\r\n" +
-                "//!=\t(not equal)\r\n" +
-                "//=\t\t(equal)\r\n" +
-                "//^\t\t(contains)\r\n" +
-                "//!^\t(not contains)\r\n" +
-                "/////////\tNumerical operations:\r\n" +
-                "//!=\t(not equal)\r\n" +
-                "//=\t\t(equal)\r\n" +
-                "//>\t\t(bigger)\r\n" +
-                "//<\t\t(less)\r\n" +
-                "//<=\t(less or equal)\r\n" +
-                "//>=\t(greater or equal)\r\n" +
-                "/////////\tBoolean operations:\r\n" +
-                "//!\t\t(not/invert)\r\n" +
-                "/////////////////////////////////////////////////////////////\r\n" +
-                "\r\n" +
-                "//Default Tabs\r\n" +
-                "Currency:\t\t\tClassName=StackableCurrency,path!^Essence,BaseName!^Remnant,path!^CurrencyDelveCrafting,BaseName!^Splinter,Path!^CurrencyItemisedProphecy,Path!^CurrencyAfflictionOrb,Path!^Mushrune\t:Default Tabs\r\n" +
-                "Divination Cards:\t\t\tClassName=DivinationCard\t\t\t\t\t:Default Tabs\r\n" +
-                "Essences:\t\t\tBaseName^Essence|BaseName^Remnant,ClassName=StackableCurrency:Default Tabs\r\n" +
-                "Fragments:\t\t\tClassName=MapFragment|BaseName^Splinter,ClassName=StackableCurrency|ClassName=LabyrinthMapItem|BaseName^Scarab\t:Default Tabs\r\n" +
-                "Maps:\t\t\tClassName=Map,!blightedMap\t\t\t:Default Tabs\r\n" +
-                "Fossils/Resonators:\t\t\tpath^CurrencyDelveCrafting | path^DelveStackableSocketableCurrency\t:Default Tabs" +
-                "Gems:\t\t\t\tClassName^Skill Gem,ItemQuality=0\t\t\t:Default Tabs\r\n" +
-                "6-Socket:\t\t\tnumberofsockets=6,numberoflinks!=6\t\t\t:Default Tabs\r\n" +
-                "Prophecies:\t\t\tPath^CurrencyItemisedProphecy\t\t\t:Default Tabs\r\n" +
-                "Jewels:\t\t\t\tClassName=Jewel,Rarity != Unique\t\t\t\t\t\t\t\t:Default Tabs\r\n" +
-                "\r\n" +
-                "//Special Items\r\n" +
-                "Veiled:\t\t\tVeiled>0\t:Special items\r\n" +
-                "AnyInfluence:\t\t\tinfluenced\t:Special items\r\n" +
-                "\r\n" +
-                "//league Content\r\n" +
-                "Legion-Incubators:\t\t\tpath^CurrencyIncubation\t:League Items\r\n" +
-                "Delirium-Splinter:\t\t\tpath^CurrencyAfflictionShard\t:League Items\r\n" +
-                "Delirium-Simulacrum:\t\t\tpath^CurrencyAfflictionFragment\t:League Items\r\n" +
-                "Blight-AnnointOils:\t\t\tpath^Mushrune\t:League Items\r\n" +
-                "//Chance Items\r\n" +
-                "Sorcerer Boots:\tBaseName=Sorcerer Boots,Rarity=Normal\t:Chance Items\r\n" +
-                "Leather Belt:\tBaseName=Leather Belt,Rarity=Normal\t\t:Chance Items\r\n" +
-                "\r\n" +
-                "//Vendor Recipes\r\n" +
-                "Chisel Recipe:\t\tBaseName=Stone Hammer|BaseName=Rock Breaker,ItemQuality=20\t:Vendor Recipes\r\n" +
-                "Quality Gems:\t\tClassName^Skill Gem,ItemQuality>0\t\t\t\t\t\t\t:Vendor Recipes\r\n" +
-                "Quality Flasks:\t\tClassName^Flask,ItemQuality>0\t\t\t\t\t\t\t\t:Vendor Recipes\r\n" +
-                "\r\n" +
-                "//Chaos Recipe LVL 2 (unindentified and ilvl 60 or above)\r\n" +
-                "Weapons:\t\t!identified,Rarity=Rare,ilvl>=60,ClassName^Two Hand|ClassName^One Hand|ClassName=Bow|ClassName=Staff|ClassName=Sceptre|ClassName=Wand|ClassName=Dagger|ClassName=Claw|ClassName=Shield :Chaos Recipe\r\n" +
-                "Jewelry:\t\t!identified,Rarity=Rare,ilvl>=60,ClassName=Ring|ClassName=Amulet \t:Chaos Recipe\r\n" +
-                "Belts:\t\t\t!identified,Rarity=Rare,ilvl>=60,ClassName=Belt \t\t\t\t\t:Chaos Recipe\r\n" +
-                "Helms:\t\t\t!identified,Rarity=Rare,ilvl>=60,ClassName=Helmet \t\t\t\t\t:Chaos Recipe\r\n" +
-                "Body Armours:\t!identified,Rarity=Rare,ilvl>=60,ClassName=Body Armour \t\t\t\t:Chaos Recipe\r\n" +
-                "Boots:\t\t\t!identified,Rarity=Rare,ilvl>=60,ClassName=Boots \t\t\t\t\t:Chaos Recipe\r\n" +
-                "Gloves:\t\t\t!identified,Rarity=Rare,ilvl>=60,ClassName=Gloves \t\t\t\t\t:Chaos Recipe";
+                @"
+//FilterName(menu name):	filters		:ParentMenu(optionaly, will be created automatially for grouping)
+//Filter parts should divided by coma or | (for OR operation(any filter part can pass))
+
+////////////	Available properties:	/////////////////////
+/////////	String (name) properties:
+//classname
+//basename
+//path
+/////////	Numerical properties:
+//itemquality
+//rarity
+//ilvl
+//tier
+//numberofsockets
+//numberoflinks
+//veiled
+//fractured
+/////////	Boolean properties:
+//identified
+//fractured
+//corrupted
+//influenced
+//Elder
+//Shaper
+//Crusader
+//Hunter
+//Redeemer
+//Warlord
+//blightedMap
+//elderGuardianMap
+/////////////////////////////////////////////////////////////
+////////////	Available operations:	/////////////////////
+/////////	String (name) operations:
+//!=	(not equal)
+//=		(equal)
+//^		(contains)
+//!^	(not contains)
+/////////	Numerical operations:
+//!=	(not equal)
+//=		(equal)
+//>		(bigger)
+//<		(less)
+//<=	(less or qual)
+//>=	(bigger or qual)
+/////////	Boolean operations:
+//!		(not/invert)
+/////////////////////////////////////////////////////////////
+
+// Optimized for 200 pts during sale
+// Buy **first blood** $20 pack on sale (200 points), currency, fragment, esssense and upgrade 2 tabs to premium, buy 1 premium 
+// P = Premium, N = normal, S = special, (C) - extra slot in currency tab, (O) - any other tab
+// 0 - some stuff for human play (maps metamorph etc)
+// 1 premium - Priority loot
+// 2 normal - Blight Maps + Incubators
+// 3 normal - Quality gems (future bot automation)
+// 4 normal - Divination cards (future bot automation)
+// 5 premium - Delve + Prophecies
+// 6 special fragments
+// 7 special essences
+// 8 special currency
+// 9 premium Dump - everything else
+
+// 0P_Other
+Unique Rings:		Rarity=Unique,ClassName=Ring									:0P_Other
+Metamorph organs:	ClassName=MetamorphosisDNA										:0P_Other
+Catalysts:			BaseName^Catalyst												:0P_Other
+ID Jewelery: 		ClassName=Amulet|ClassName=Ring,identified 						:0P_Other
+ID Jewels:	 		ClassName=AbyssJewel|ClassName=Jewel,identified			 		:0P_Other
+Heist Contract: 	BaseName^Contract 												:0P_Other
+Heist Blueprint: 	BaseName^Blueprint												:0P_Other
+
+// 1P_PriorityLoot (Sell from here)
+Top prophecies: 	BaseName^Trash to Treasure|BaseName^The Queen's Sacrifice|BaseName^Fated Connections|BaseName^Fire and Brimstone|BaseName^A Dishonourable Death|BaseName^Darktongue's Shriek|BaseName^Monstrous Treasure|BaseName^Song of the Sekhema|BaseName^Ending the Torment|BaseName^The Bowstring's Music 		:1P_PriorityLoot
+Top div cards: 		BaseName^House of Mirrors|BaseName^The Demon|BaseName^The Immortal|BaseName^The Doctor|BaseName^The Cheater|BaseName^The Fiend|BaseName^Beauty Through Death|BaseName^Alluring Bounty|BaseName^The Iron Bard|BaseName^Seven Years Bad Luck|BaseName^Succor of the Sinless|BaseName^The Damned|BaseName^The Samurai's Eye|BaseName^Abandoned Wealth|BaseName^The Nurse|BaseName^Gift of Asenath|BaseName^Nook's Crown|BaseName^Immortal Resolve|BaseName^Wealth and Power|BaseName^The Sustenance|BaseName^The Awakened|BaseName^Pride of the First Ones|BaseName^The Price of Loyalty|BaseName^Prometheus' Armoury|BaseName^A Familiar Call|BaseName^The Dragon's Heart|BaseName^The Greatest Intentions|BaseName^The Craving|BaseName^The Saint's Treasure|BaseName^The Mayor|BaseName^The White Knight|BaseName^The Long Con|BaseName^The Celestial Stone|BaseName^The Escape|BaseName^Void of the Elements|BaseName^Squandered Prosperity|BaseName^The Hive of Knowledge|BaseName^Dark Dreams|BaseName^The Lord of Celebration|BaseName^Echoes of Love 		:1P_PriorityLoot
+All L21Q23 gems: 	ItemQuality>20,skillgemlevel>20 								:1P_PriorityLoot
+Good L21 gems: 		BaseName^Vaal Discipline,skillgemlevel>20|BaseName^Hatred,skillgemlevel>20|BaseName^Precision,skillgemlevel>20|BaseName^Wrath,skillgemlevel>20|BaseName^Purity of Fire,skillgemlevel>20|BaseName^Blood Magic,skillgemlevel>20|BaseName^Anger,skillgemlevel>20|BaseName^Vitality,skillgemlevel>20|BaseName^Animate Guardian,skillgemlevel>20|BaseName^Purity of Ice,skillgemlevel>20|BaseName^Discipline,skillgemlevel>20|BaseName^Vaal Righteous Fire,skillgemlevel>20|BaseName^Zealotry,skillgemlevel>20|BaseName^Raise Spectre,skillgemlevel>20|BaseName^Vaal Haste,skillgemlevel>20|BaseName^Herald of Purity,skillgemlevel>20|BaseName^Hypothermia Support,skillgemlevel>20|BaseName^Cast when Damage Taken,skillgemlevel>20|BaseName^Hexblast,skillgemlevel>20|BaseName^Inspiration,skillgemlevel>20|BaseName^Ice Nova,skillgemlevel>20|BaseName^Vaal Grace,skillgemlevel>20												:1P_PriorityLoot
+Good Q23 gems: 		ClassName^Skill Gem,BaseName^Temporal Chains,ItemQuality>20|ClassName^Skill Gem,BaseName^Kinetic Bolt,ItemQuality>20|ClassName^Skill Gem,BaseName^Sniper's Mark,ItemQuality>20|ClassName^Skill Gem,BaseName^Galvanic Arrow,ItemQuality>20|ClassName^Skill Gem,BaseName^Hydrosphere,ItemQuality>20|ClassName^Skill Gem,BaseName^Power Charge On Critical Support,ItemQuality>20|ClassName^Skill Gem,BaseName^High-Impact Mine,ItemQuality>20|ClassName^Skill Gem,BaseName^Swift Assembly,ItemQuality>20|ClassName^Skill Gem,BaseName^Lightning Arrow,ItemQuality>20|ClassName^Skill Gem,BaseName^Barrage,ItemQuality>20|ClassName^Skill Gem,BaseName^Vaal Haste,ItemQuality>20|ClassName^Skill Gem,BaseName^Block Chance Reduction,ItemQuality>20|ClassName^Skill Gem,BaseName^Vaal Righteous Fire,ItemQuality>20|ClassName^Skill Gem,BaseName^Bonechill,ItemQuality>20|ClassName^Skill Gem,BaseName^Physical to Lightning,ItemQuality>20|ClassName^Skill Gem,BaseName^Slower Projectiles,ItemQuality>20|ClassName^Skill Gem,BaseName^Berserk,ItemQuality>20|ClassName^Skill Gem,BaseName^Vaal Discipline,ItemQuality>20|ClassName^Skill Gem,BaseName^Vaal Grace,ItemQuality>20|ClassName^Skill Gem,BaseName^Vaal Molten Shell,ItemQuality>20|ClassName^Skill Gem,BaseName^Increased Duration,ItemQuality>20|ClassName^Skill Gem,BaseName^Pinpoint,ItemQuality>20|ClassName^Skill Gem,BaseName^Minefield,ItemQuality>20|ClassName^Skill Gem,BaseName^Less Duration,ItemQuality>20|ClassName^Skill Gem,BaseName^Hextouch,ItemQuality>20|ClassName^Skill Gem,BaseName^Greater Multiple Projectiles,ItemQuality>20|ClassName^Skill Gem,BaseName^Cast when Damage Taken,ItemQuality>20|ClassName^Skill Gem,BaseName^Greater Volley,ItemQuality>20|ClassName^Skill Gem,BaseName^Inspiration,ItemQuality>20|ClassName^Skill Gem,BaseName^Blood Magic,ItemQuality>20|ClassName^Skill Gem,BaseName^Vaal Ancestral Warchief,ItemQuality>20|ClassName^Skill Gem,BaseName^Vitality,ItemQuality>20|ClassName^Skill Gem,BaseName^Determination,ItemQuality>20 			:1P_PriorityLoot
+All Q23 gems: 		ItemQuality>20 													:1P_PriorityLoot
+All L21 gems: 		skillgemlevel>20 												:1P_PriorityLoot
+Other top: 			BaseName^Golden Oil|BaseName^Silver Oil|BaseName^Opalescent Oil|BaseName^Delirium|path^CurrencyAfflictionShard|path^CurrencyAfflictionFragment|BaseName^Enriched|BaseName^Empower|BaseName^Enlighten 		:1P_PriorityLoot
+
+// 2N_BlightMaps_Incubators
+Blighted Maps: 		ClassName=Map,blightedMap,!elderGuardianMap 					:2N_BlightMaps_Incubators
+Incubators:			ClassName^Incubator												:2N_BlightMaps_Incubators
+Other Maps: 		ClassName=Map 													:2N_BlightMaps_Incubators
+
+// 3N_Quality
+Quality Gems:		ClassName^Skill Gem,ItemQuality>0								:3N_Quality
+Quality Flasks:		ClassName^Flask,ItemQuality>0									:3N_Quality
+
+// 4N_Divination
+Divination Cards:	ClassName=DivinationCard										:4N_Divination
+
+// 5P_Delve_Prophecies
+Breachstone: 		BaseName^Breachstone				 							:5P_Delve_Prophecies
+Prophecies:			ClassName!^QuestItem,BaseName=Prophecy							:5P_Delve_Prophecies
+Fossils: 			BaseName^Fossil													:5P_Delve_Prophecies
+Resonator 4:        BaseName^Prime,ClassName=DelveStackableSocketableCurrency       :5P_Delve_Prophecies
+Resonator 3:        BaseName^Powerful,ClassName=DelveStackableSocketableCurrency 	:5P_Delve_Prophecies
+Resonator 2:        BaseName^Potent,ClassName=DelveStackableSocketableCurrency 		:5P_Delve_Prophecies
+Resonator 1:        BaseName^Primitiv,ClassName=DelveStackableSocketableCurrency 	:5P_Delve_Prophecies
+
+// 6S_Frags
+Breach Splinter: 	BaseName^Splinter,Path^CurrencyBreach 							:6S_Frags
+TimeLess Splinter: 	BaseName^Splinter,Path^CurrencyLegion 							:6S_Frags
+Scarab:				BaseName^Scarab													:6S_Frags
+Sacrifice:			BaseName^Sacrifice												:6S_Frags
+Map Fragments: 		ClassName=MapFragment 											:6S_Frags
+Offerings: 			ClassName=LabyrinthMapItem 										:6S_Frags
+
+// 7S_Essences
+Essences:			BaseName^Essence,ClassName=StackableCurrency					:7S_Essences
+
+// 8S_Currency
+Oils(C): 			BaseName^Oil,Path^Mushrune 										:8S_Currency
+Stacked Decks (C):	ClassName=StackableCurrency,BaseName=Stacked Deck 				:8S_Currency
+Currency:			ClassName=StackableCurrency 									:8S_Currency
+
+// 9P_Dump
+Veiled:				veiled > 0														:9P_Dump
+Rare ID: 			Rarity=Rare,identified 											:9P_Dump
+Influenced: 		influenced 														:9P_Dump
+Everything else:	Rarity=Normal|Rarity=Magic|Rarity=Unique|!identified 			:9P_Dump
+
+";
 
             #endregion
 
