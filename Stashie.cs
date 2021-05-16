@@ -617,7 +617,7 @@ namespace Stashie
             _clickWindowOffset = GameController.Window.GetWindowRectangle().TopLeft;
             foreach (var invItem in invItems)
             {
-                if (invItem.Item == null || invItem.Address == 0) continue;
+                if (invItem.Item == null || invItem.Address == 0 || !invItem.IsValid || !invItem.Item.IsValid) continue;
                 if (CheckIgnoreCells(invItem)) continue;
                 var baseItemType = GameController.Files.BaseItemTypes.Translate(invItem.Item.Path);
                 var testItem = new ItemData(invItem, baseItemType);

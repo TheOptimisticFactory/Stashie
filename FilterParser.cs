@@ -352,74 +352,81 @@ namespace Stashie
                     return false;
             }
 
-            switch (operation.ToLower())
+            try
             {
-                case OPERATION_EQUALITY:
-                    stringComp.CompDeleg = data => stringComp.StringParameter(data).Equals(stringComp.CompareString);
-                    break;
-                case OPERATION_NONEQUALITY:
-                    stringComp.CompDeleg = data => !stringComp.StringParameter(data).Equals(stringComp.CompareString);
-                    break;
-                case OPERATION_CONTAINS:
-                    stringComp.CompDeleg = data => stringComp.StringParameter(data).Contains(stringComp.CompareString);
-                    break;
-                case OPERATION_NOTCONTAINS:
-                    stringComp.CompDeleg = data => !stringComp.StringParameter(data).Contains(stringComp.CompareString);
-                    break;
+                switch (operation.ToLower())
+                {
+                    case OPERATION_EQUALITY:
+                        stringComp.CompDeleg = data => stringComp.StringParameter(data).Equals(stringComp.CompareString);
+                        break;
+                    case OPERATION_NONEQUALITY:
+                        stringComp.CompDeleg = data => !stringComp.StringParameter(data).Equals(stringComp.CompareString);
+                        break;
+                    case OPERATION_CONTAINS:
+                        stringComp.CompDeleg = data => stringComp.StringParameter(data).Contains(stringComp.CompareString);
+                        break;
+                    case OPERATION_NOTCONTAINS:
+                        stringComp.CompDeleg = data => !stringComp.StringParameter(data).Contains(stringComp.CompareString);
+                        break;
 
-                case OPERATION_BIGGER:
-                    if (stringComp.IntParameter == null)
-                    {
-                        DebugWindow.LogMsg(
-                            $"Filter parser error: Can't compare string parameter with {OPERATION_BIGGER} (numerical) operation. Statement: {command}",
-                            10);
+                    case OPERATION_BIGGER:
+                        if (stringComp.IntParameter == null)
+                        {
+                            DebugWindow.LogMsg(
+                                $"Filter parser error: Can't compare string parameter with {OPERATION_BIGGER} (numerical) operation. Statement: {command}",
+                                10);
 
+                            return false;
+                        }
+
+                        stringComp.CompDeleg = data => stringComp.IntParameter(data) > stringComp.CompareInt;
+                        break;
+                    case OPERATION_LESS:
+                        if (stringComp.IntParameter == null)
+                        {
+                            DebugWindow.LogMsg(
+                                $"Filter parser error: Can't compare string parameter with {OPERATION_LESS} (numerical) operation. Statement: {command}",
+                                10);
+
+                            return false;
+                        }
+
+                        stringComp.CompDeleg = data => stringComp.IntParameter(data) < stringComp.CompareInt;
+                        break;
+                    case OPERATION_LESSEQUAL:
+                        if (stringComp.IntParameter == null)
+                        {
+                            DebugWindow.LogMsg(
+                                $"Filter parser error: Can't compare string parameter with {OPERATION_LESSEQUAL} (numerical) operation. Statement: {command}",
+                                10);
+
+                            return false;
+                        }
+
+                        stringComp.CompDeleg = data => stringComp.IntParameter(data) <= stringComp.CompareInt;
+                        break;
+
+                    case OPERATION_BIGGERQUAL:
+                        if (stringComp.IntParameter == null)
+                        {
+                            DebugWindow.LogMsg(
+                                $"Filter parser error: Can't compare string parameter with {OPERATION_BIGGERQUAL} (numerical) operation. Statement: {command}",
+                                10);
+
+                            return false;
+                        }
+
+                        stringComp.CompDeleg = data => stringComp.IntParameter(data) >= stringComp.CompareInt;
+                        break;
+
+                    default:
+                        DebugWindow.LogMsg($"Filter parser: Operation is not defined in code: {operation}", 10);
                         return false;
-                    }
+                }
+            }
+            catch (Exception ex)
+            {
 
-                    stringComp.CompDeleg = data => stringComp.IntParameter(data) > stringComp.CompareInt;
-                    break;
-                case OPERATION_LESS:
-                    if (stringComp.IntParameter == null)
-                    {
-                        DebugWindow.LogMsg(
-                            $"Filter parser error: Can't compare string parameter with {OPERATION_LESS} (numerical) operation. Statement: {command}",
-                            10);
-
-                        return false;
-                    }
-
-                    stringComp.CompDeleg = data => stringComp.IntParameter(data) < stringComp.CompareInt;
-                    break;
-                case OPERATION_LESSEQUAL:
-                    if (stringComp.IntParameter == null)
-                    {
-                        DebugWindow.LogMsg(
-                            $"Filter parser error: Can't compare string parameter with {OPERATION_LESSEQUAL} (numerical) operation. Statement: {command}",
-                            10);
-
-                        return false;
-                    }
-
-                    stringComp.CompDeleg = data => stringComp.IntParameter(data) <= stringComp.CompareInt;
-                    break;
-
-                case OPERATION_BIGGERQUAL:
-                    if (stringComp.IntParameter == null)
-                    {
-                        DebugWindow.LogMsg(
-                            $"Filter parser error: Can't compare string parameter with {OPERATION_BIGGERQUAL} (numerical) operation. Statement: {command}",
-                            10);
-
-                        return false;
-                    }
-
-                    stringComp.CompDeleg = data => stringComp.IntParameter(data) >= stringComp.CompareInt;
-                    break;
-
-                default:
-                    DebugWindow.LogMsg($"Filter parser: Operation is not defined in code: {operation}", 10);
-                    return false;
             }
 
             newFilter.Filters.Add(stringComp);
