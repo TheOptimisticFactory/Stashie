@@ -260,16 +260,16 @@ Good L21 gems: 		BaseName^Vaal Discipline,skillgemlevel>20|BaseName^Hatred,skill
 Good Q23 gems: 		ClassName^Skill Gem,BaseName^Temporal Chains,ItemQuality>20|ClassName^Skill Gem,BaseName^Kinetic Bolt,ItemQuality>20|ClassName^Skill Gem,BaseName^Sniper's Mark,ItemQuality>20|ClassName^Skill Gem,BaseName^Galvanic Arrow,ItemQuality>20|ClassName^Skill Gem,BaseName^Hydrosphere,ItemQuality>20|ClassName^Skill Gem,BaseName^Power Charge On Critical Support,ItemQuality>20|ClassName^Skill Gem,BaseName^High-Impact Mine,ItemQuality>20|ClassName^Skill Gem,BaseName^Swift Assembly,ItemQuality>20|ClassName^Skill Gem,BaseName^Lightning Arrow,ItemQuality>20|ClassName^Skill Gem,BaseName^Barrage,ItemQuality>20|ClassName^Skill Gem,BaseName^Vaal Haste,ItemQuality>20|ClassName^Skill Gem,BaseName^Block Chance Reduction,ItemQuality>20|ClassName^Skill Gem,BaseName^Vaal Righteous Fire,ItemQuality>20|ClassName^Skill Gem,BaseName^Bonechill,ItemQuality>20|ClassName^Skill Gem,BaseName^Physical to Lightning,ItemQuality>20|ClassName^Skill Gem,BaseName^Slower Projectiles,ItemQuality>20|ClassName^Skill Gem,BaseName^Berserk,ItemQuality>20|ClassName^Skill Gem,BaseName^Vaal Discipline,ItemQuality>20|ClassName^Skill Gem,BaseName^Vaal Grace,ItemQuality>20|ClassName^Skill Gem,BaseName^Vaal Molten Shell,ItemQuality>20|ClassName^Skill Gem,BaseName^Increased Duration,ItemQuality>20|ClassName^Skill Gem,BaseName^Pinpoint,ItemQuality>20|ClassName^Skill Gem,BaseName^Minefield,ItemQuality>20|ClassName^Skill Gem,BaseName^Less Duration,ItemQuality>20|ClassName^Skill Gem,BaseName^Hextouch,ItemQuality>20|ClassName^Skill Gem,BaseName^Greater Multiple Projectiles,ItemQuality>20|ClassName^Skill Gem,BaseName^Cast when Damage Taken,ItemQuality>20|ClassName^Skill Gem,BaseName^Greater Volley,ItemQuality>20|ClassName^Skill Gem,BaseName^Inspiration,ItemQuality>20|ClassName^Skill Gem,BaseName^Blood Magic,ItemQuality>20|ClassName^Skill Gem,BaseName^Vaal Ancestral Warchief,ItemQuality>20|ClassName^Skill Gem,BaseName^Vitality,ItemQuality>20|ClassName^Skill Gem,BaseName^Determination,ItemQuality>20 			:1P_PriorityLoot
 All Q23 gems: 		ItemQuality>20 													:1P_PriorityLoot
 All L21 gems: 		skillgemlevel>20 												:1P_PriorityLoot
-Other top: 			BaseName^Golden Oil|BaseName^Silver Oil|BaseName^Opalescent Oil|BaseName^Delirium|path^CurrencyAfflictionShard|path^CurrencyAfflictionFragment|BaseName^Enriched|BaseName^Empower|BaseName^Enlighten 		:1P_PriorityLoot
+Other top: 			BaseName^Delirium|path^CurrencyAfflictionShard|path^CurrencyAfflictionFragment|BaseName^Enriched|BaseName^Empower|BaseName^Enlighten 		:1P_PriorityLoot
 
-// 2N_BlightMaps_Incubators
-Blighted Maps: 		ClassName=Map,blightedMap,!elderGuardianMap 					:2N_BlightMaps_Incubators
-Incubators:			ClassName^Incubator												:2N_BlightMaps_Incubators
-Other Maps: 		ClassName=Map 													:2N_BlightMaps_Incubators
+// 2N_BlightMaps
+Blighted Maps: 		ClassName=Map,blightedMap,!elderGuardianMap 					:2N_BlightMaps
+Other Maps: 		ClassName=Map 													:2N_BlightMaps
 
-// 3N_Quality
-Quality Gems:		ClassName^Skill Gem,ItemQuality>0								:3N_Quality
-Quality Flasks:		ClassName^Flask,ItemQuality>0									:3N_Quality
+// 3N_Quality_Incubators
+Quality Gems:		ClassName^Skill Gem,ItemQuality>0								:3N_Quality_Incubators
+Quality Flasks:		ClassName^Flask,ItemQuality>0									:3N_Quality_Incubators
+Incubators:			ClassName^Incubator												:3N_Quality_Incubators
 
 // 4N_Divination
 Divination Cards:	ClassName=DivinationCard										:4N_Divination
@@ -302,11 +302,11 @@ Currency:			ClassName=StackableCurrency 									:8S_Currency
 // 9P_Dump
 Veiled:				veiled > 0														:9P_Dump
 Rare ID: 			Rarity=Rare,identified 											:9P_Dump
-Rare unID: 			Rarity=Rare,!identified 										:9P_Dump
+Rare UNID: 			Rarity=Rare,!identified 										:9P_Dump
 Influenced: 		influenced 														:9P_Dump
-Everything else:	Rarity=Normal|Rarity=Magic|Rarity=Unique             			:9P_Dump
+Everything else:	Rarity=Normal|Rarity=Magic|Rarity=Unique|!identified 			:9P_Dump
 
-";
+                ";
 
             #endregion
 
