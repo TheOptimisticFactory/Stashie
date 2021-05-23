@@ -303,8 +303,10 @@ Currency:			ClassName=StackableCurrency 									:8S_Currency
 Veiled:				veiled > 0														:9P_Dump
 Rare ID: 			Rarity=Rare,identified 											:9P_Dump
 Rare UNID: 			Rarity=Rare,!identified 										:9P_Dump
+Normal or Magic:	Rarity=Normal|Rarity=Magic										:9P_Dump
 Influenced: 		influenced 														:9P_Dump
-Everything else:	Rarity=Normal|Rarity=Magic|Rarity=Unique|!identified 			:9P_Dump
+Uniques:            Rarity=Unique                                                   :9P_Dump
+Everything else:	!identified             			                            :9P_Dump
 
                 ";
 
