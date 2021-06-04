@@ -307,7 +307,7 @@ Rare ID: 			Rarity=Rare,identified 											:9P_Dump
 Rare UNID: 			Rarity=Rare,!identified 										:9P_Dump
 Normal or Magic:	Rarity=Normal|Rarity=Magic										:9P_Dump
 Uniques:            Rarity=Unique                                                   :9P_Dump
-Everything else:	!identified             			                            :9P_Dump
+Everything else:	ilvl > 0                                                        :9P_Dump
 
                 ";
 
