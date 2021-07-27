@@ -822,7 +822,7 @@ Everything else:	Rarity=Normal|Rarity=Magic|Rarity=Unique             			:9P_Dum
                 yield break;
             }
 
-            var delay = (int) GameController.Game.IngameState.CurLatency + Settings.ExtraDelay.Value;
+            var delay = GameController.Game.IngameState.ServerData.Latency + Settings.ExtraDelay.Value;
             var currencyTabVisible = false;
             var inventory = GameController.Game.IngameState.IngameUi.InventoryPanel[InventoryIndex.PlayerInventory];
             var stashItems = inventory.VisibleInventoryItems;
@@ -1017,7 +1017,7 @@ Everything else:	Rarity=Normal|Rarity=Magic|Rarity=Unique             			:9P_Dum
 
         private IEnumerator SplitStack(int amount, Vector2 from, Vector2 to)
         {
-            var delay = (int) GameController.Game.IngameState.CurLatency * 2 + Settings.ExtraDelay;
+            var delay = GameController.Game.IngameState.ServerData.Latency * 2 + Settings.ExtraDelay;
             Input.KeyDown(Keys.ShiftKey);
 
             while (!Input.IsKeyDown(Keys.ShiftKey)) yield return new WaitTime(WhileDelay);
