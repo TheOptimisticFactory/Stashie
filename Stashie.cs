@@ -740,7 +740,7 @@ Everything else:	ilvl > 0                                                       
                         LogMessage($"Error while waiting for:{waitedItems.Count} items");
                         yield break;
                     }
-                    yield return new WaitTime((int)GameController.IngameState.CurLatency); //maybe replace with Setting option
+                    yield return new WaitTime((int)GameController.ServerData.Latency); //maybe replace with Setting option
                 }*/
                 yield return new WaitFunctionTimed(
                     () => GameController.IngameState.IngameUi.StashElement.AllInventories[_visibleStashIndex] != null,
@@ -819,7 +819,7 @@ Everything else:	ilvl > 0                                                       
                 yield break;
             }
 
-            var delay = (int) GameController.Game.IngameState.CurLatency + Settings.ExtraDelay.Value;
+            var delay = GameController.Game.IngameState.ServerData.Latency + Settings.ExtraDelay.Value;
             var currencyTabVisible = false;
             var inventory = GameController.Game.IngameState.IngameUi.InventoryPanel[InventoryIndex.PlayerInventory];
             var stashItems = inventory.VisibleInventoryItems;
@@ -1014,7 +1014,7 @@ Everything else:	ilvl > 0                                                       
 
         private IEnumerator SplitStack(int amount, Vector2 from, Vector2 to)
         {
-            var delay = (int) GameController.Game.IngameState.CurLatency * 2 + Settings.ExtraDelay;
+            var delay = GameController.Game.IngameState.ServerData.Latency * 2 + Settings.ExtraDelay;
             Input.KeyDown(Keys.ShiftKey);
 
             while (!Input.IsKeyDown(Keys.ShiftKey)) yield return new WaitTime(WhileDelay);
@@ -1355,6 +1355,7 @@ Everything else:	ilvl > 0                                                       
 
                 yield return Wait1Sec;
             }
+            // ReSharper disable once IteratorNeverReturns
         }
 
         private static void VerticalScroll(bool scrollUp, int clicks)
