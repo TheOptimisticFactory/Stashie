@@ -521,14 +521,60 @@ Everything else:	ilvl > 0                                                       
             _settingsListNodes.Add(Settings.CurrencyStashTab);
         }
 
+        private readonly Stopwatch _cursorStuckWithGarbageTimer = new();
+
+        private bool IsCursorWithItem()
+        {
+            if (GameController?.Game?.IsPreGame == true) return false;
+            try
+            {
+                var playerInventories = GameController
+                    ?.Game
+                    ?.IngameState
+                    ?.ServerData
+                    ?.PlayerInventories;
+                var cursorItems =
+                    (from playerInventory in playerInventories
+                        select playerInventory?.Inventory
+                        into inventory
+                        where inventory?.InventType == InventoryTypeE.Cursor
+                        select inventory)
+                    .FirstOrDefault();
+                if (cursorItems?.Items?.Count != 1) return false;
+                var cursorItem = cursorItems?.Items?[0];
+                return !string.IsNullOrEmpty(cursorItem?.Path);
+            }
+            catch (Exception e) // ok
+            {
+                return false;
+            }
+        }
+
+        private void UpdateCursorStuckWithGarbageTimer()
+        {
+            if (IsCursorWithItem())
+                _cursorStuckWithGarbageTimer.Start();
+            else if (_cursorStuckWithGarbageTimer.IsRunning) 
+                _cursorStuckWithGarbageTimer.Reset();
+        }
+        
         public override Job Tick()
         {
+            UpdateCursorStuckWithGarbageTimer();
+            
             if (!stashingRequirementsMet() && Core.ParallelRunner.FindByName("Stashie_DropItemsToStash") != null)
             {
                 StopCoroutine("Stashie_DropItemsToStash");
                 return null;
             }
 
+            // dont try to stash
+            if (_cursorStuckWithGarbageTimer.ElapsedMilliseconds > 5000)
+            {
+                StopCoroutine("Stashie_DropItemsToStash");
+                return null;
+            }
+            
             if (Settings.DropHotkey.PressedOnce())
             {
                 if (Core.ParallelRunner.FindByName("Stashie_DropItemsToStash") == null)
