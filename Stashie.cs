@@ -1327,33 +1327,32 @@ Everything else:	ilvl > 0                                                       
         {
             while (true)
             {
+                yield return Wait1Sec;
                 while (!GameController.Game.IngameState.InGame) yield return Wait2Sec;
-
                 var stashPanel = GameController.Game.IngameState?.IngameUi?.StashElement;
-
                 while (stashPanel == null || !stashPanel.IsVisibleLocal) yield return Wait1Sec;
-
                 _counterStashTabNamesCoroutine++;
                 _stashTabNamesCoroutine?.UpdateTicks(_counterStashTabNamesCoroutine);
                 var cachedNames = Settings.AllStashNames;
                 var realNames = stashPanel.AllStashNames;
-
-                if (realNames.Count + 1 != cachedNames.Count)
+                if (GameController.Area.CurrentArea.IsTown || GameController.Area.CurrentArea.IsHideout) // always update names once every 2 seconds
+                {
+                    UpdateStashNames(realNames);
+                    yield return Wait2Sec;
+                    continue;
+                }
+                if (realNames.Count + 1 != cachedNames.Count) // if new tab appeared
                 {
                     UpdateStashNames(realNames);
                     continue;
                 }
-
-                for (var index = 0; index < realNames.Count; ++index)
+                for (var index = 0; index < realNames.Count; ++index) // if tab renamed
                 {
                     var cachedName = cachedNames[index + 1];
                     if (cachedName.Equals(realNames[index])) continue;
-
                     UpdateStashNames(realNames);
                     break;
                 }
-
-                yield return Wait1Sec;
             }
             // ReSharper disable once IteratorNeverReturns
         }
