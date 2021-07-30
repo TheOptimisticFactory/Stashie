@@ -521,7 +521,7 @@ Everything else:	ilvl > 0                                                       
             _settingsListNodes.Add(Settings.CurrencyStashTab);
         }
 
-        private readonly Stopwatch _cursorStuckWithGarbageTimer = new();
+        private readonly Stopwatch _cursorStuckWithGarbageTimer = new Stopwatch();
 
         private bool IsCursorWithItem()
         {
