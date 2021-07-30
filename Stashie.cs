@@ -567,22 +567,19 @@ Everything else:	ilvl > 0                                                       
                 StopCoroutine("Stashie_DropItemsToStash");
                 return null;
             }
-
-            // dont try to stash
+            
             if (_cursorStuckWithGarbageTimer.ElapsedMilliseconds > 5000)
             {
                 StopCoroutine("Stashie_DropItemsToStash");
                 return null;
             }
-            
-            if (Settings.DropHotkey.PressedOnce())
-            {
-                if (Core.ParallelRunner.FindByName("Stashie_DropItemsToStash") == null)
-                    StartDropItemsToStashCoroutine();
-                else
-                    StopCoroutine("Stashie_DropItemsToStash");
-            }
 
+            if (_cursorStuckWithGarbageTimer.ElapsedMilliseconds < 5000 &&
+                Settings.DropHotkey.PressedOnce() &&
+                Core.ParallelRunner.FindByName("Stashie_DropItemsToStash") == null)
+            {
+                StartDropItemsToStashCoroutine();
+            }
             return null;
         }
 
