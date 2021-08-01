@@ -265,7 +265,7 @@ Blighted Maps: 		ClassName=Map,blightedMap,!elderGuardianMap 					:2N_BlightMaps
 Other Maps: 		ClassName=Map 													:2N_BlightMaps
 
 // 3N_Quality_Incubators
-Quality Gems:		ClassName^Skill Gem,ItemQuality>0								:3N_Quality_Incubators
+Quality Gems:		skillgemlevel>0                                                 :3N_Quality_Incubators
 Quality Flasks:		ClassName^Flask,ItemQuality>0									:3N_Quality_Incubators
 Incubators:			ClassName^Incubator												:3N_Quality_Incubators
 
