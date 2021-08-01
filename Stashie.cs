@@ -252,14 +252,13 @@ Heist Contract: 	BaseName^Contract 												:0P_Other
 Heist Blueprint: 	BaseName^Blueprint												:0P_Other
 
 // 1P_PriorityLoot (Sell from here)
-Top prophecies: 	BaseName^Trash to Treasure|BaseName^The Queen's Sacrifice|BaseName^Fated Connections|BaseName^Fire and Brimstone|BaseName^A Dishonourable Death|BaseName^Darktongue's Shriek|BaseName^Monstrous Treasure|BaseName^Song of the Sekhema|BaseName^Ending the Torment|BaseName^The Bowstring's Music 		:1P_PriorityLoot
-Top div cards: 		BaseName^House of Mirrors|BaseName^The Demon|BaseName^The Immortal|BaseName^The Doctor|BaseName^The Cheater|BaseName^The Fiend|BaseName^Beauty Through Death|BaseName^Alluring Bounty|BaseName^The Iron Bard|BaseName^Seven Years Bad Luck|BaseName^Succor of the Sinless|BaseName^The Damned|BaseName^The Samurai's Eye|BaseName^Abandoned Wealth|BaseName^The Nurse|BaseName^Gift of Asenath|BaseName^Nook's Crown|BaseName^Immortal Resolve|BaseName^Wealth and Power|BaseName^The Sustenance|BaseName^The Awakened|BaseName^Pride of the First Ones|BaseName^The Price of Loyalty|BaseName^Prometheus' Armoury|BaseName^A Familiar Call|BaseName^The Dragon's Heart|BaseName^The Greatest Intentions|BaseName^The Craving|BaseName^The Saint's Treasure|BaseName^The Mayor|BaseName^The White Knight|BaseName^The Long Con|BaseName^The Celestial Stone|BaseName^The Escape|BaseName^Void of the Elements|BaseName^Squandered Prosperity|BaseName^The Hive of Knowledge|BaseName^Dark Dreams|BaseName^The Lord of Celebration|BaseName^Echoes of Love 		:1P_PriorityLoot
-All L21Q23 gems: 	ItemQuality>20,skillgemlevel>20 								:1P_PriorityLoot
-Good L21 gems: 		BaseName^Vaal Discipline,skillgemlevel>20|BaseName^Hatred,skillgemlevel>20|BaseName^Precision,skillgemlevel>20|BaseName^Wrath,skillgemlevel>20|BaseName^Purity of Fire,skillgemlevel>20|BaseName^Blood Magic,skillgemlevel>20|BaseName^Anger,skillgemlevel>20|BaseName^Vitality,skillgemlevel>20|BaseName^Animate Guardian,skillgemlevel>20|BaseName^Purity of Ice,skillgemlevel>20|BaseName^Discipline,skillgemlevel>20|BaseName^Vaal Righteous Fire,skillgemlevel>20|BaseName^Zealotry,skillgemlevel>20|BaseName^Raise Spectre,skillgemlevel>20|BaseName^Vaal Haste,skillgemlevel>20|BaseName^Herald of Purity,skillgemlevel>20|BaseName^Hypothermia Support,skillgemlevel>20|BaseName^Cast when Damage Taken,skillgemlevel>20|BaseName^Hexblast,skillgemlevel>20|BaseName^Inspiration,skillgemlevel>20|BaseName^Ice Nova,skillgemlevel>20|BaseName^Vaal Grace,skillgemlevel>20												:1P_PriorityLoot
-Good Q23 gems: 		ClassName^Skill Gem,BaseName^Temporal Chains,ItemQuality>20|ClassName^Skill Gem,BaseName^Kinetic Bolt,ItemQuality>20|ClassName^Skill Gem,BaseName^Sniper's Mark,ItemQuality>20|ClassName^Skill Gem,BaseName^Galvanic Arrow,ItemQuality>20|ClassName^Skill Gem,BaseName^Hydrosphere,ItemQuality>20|ClassName^Skill Gem,BaseName^Power Charge On Critical Support,ItemQuality>20|ClassName^Skill Gem,BaseName^High-Impact Mine,ItemQuality>20|ClassName^Skill Gem,BaseName^Swift Assembly,ItemQuality>20|ClassName^Skill Gem,BaseName^Lightning Arrow,ItemQuality>20|ClassName^Skill Gem,BaseName^Barrage,ItemQuality>20|ClassName^Skill Gem,BaseName^Vaal Haste,ItemQuality>20|ClassName^Skill Gem,BaseName^Block Chance Reduction,ItemQuality>20|ClassName^Skill Gem,BaseName^Vaal Righteous Fire,ItemQuality>20|ClassName^Skill Gem,BaseName^Bonechill,ItemQuality>20|ClassName^Skill Gem,BaseName^Physical to Lightning,ItemQuality>20|ClassName^Skill Gem,BaseName^Slower Projectiles,ItemQuality>20|ClassName^Skill Gem,BaseName^Berserk,ItemQuality>20|ClassName^Skill Gem,BaseName^Vaal Discipline,ItemQuality>20|ClassName^Skill Gem,BaseName^Vaal Grace,ItemQuality>20|ClassName^Skill Gem,BaseName^Vaal Molten Shell,ItemQuality>20|ClassName^Skill Gem,BaseName^Increased Duration,ItemQuality>20|ClassName^Skill Gem,BaseName^Pinpoint,ItemQuality>20|ClassName^Skill Gem,BaseName^Minefield,ItemQuality>20|ClassName^Skill Gem,BaseName^Less Duration,ItemQuality>20|ClassName^Skill Gem,BaseName^Hextouch,ItemQuality>20|ClassName^Skill Gem,BaseName^Greater Multiple Projectiles,ItemQuality>20|ClassName^Skill Gem,BaseName^Cast when Damage Taken,ItemQuality>20|ClassName^Skill Gem,BaseName^Greater Volley,ItemQuality>20|ClassName^Skill Gem,BaseName^Inspiration,ItemQuality>20|ClassName^Skill Gem,BaseName^Blood Magic,ItemQuality>20|ClassName^Skill Gem,BaseName^Vaal Ancestral Warchief,ItemQuality>20|ClassName^Skill Gem,BaseName^Vitality,ItemQuality>20|ClassName^Skill Gem,BaseName^Determination,ItemQuality>20 			:1P_PriorityLoot
-All Q23 gems: 		ItemQuality>20 													:1P_PriorityLoot
-All L21 gems: 		skillgemlevel>20 												:1P_PriorityLoot
-Other top: 			BaseName^Delirium|path^CurrencyAfflictionShard|path^CurrencyAfflictionFragment|BaseName^Enriched|BaseName^Empower|BaseName^Enlighten 		:1P_PriorityLoot
+Top prophecies: 	BaseName^The Queen's Sacrifice|BaseName^Fated Connections|BaseName^Trash to Treasure|BaseName^The Child of Lunaris|BaseName^Song of the Sekhema|BaseName^The Great Leader of the North	:1P_PriorityLoot
+Top div cards:		BaseName^House of Mirrors|BaseName^The Demon|BaseName^The Immortal|BaseName^The Doctor|BaseName^The Cheater|BaseName^The Fiend|BaseName^Beauty Through Death|BaseName^Alluring Bounty|BaseName^The Iron Bard|BaseName^Seven Years Bad Luck|BaseName^Succor of the Sinless|BaseName^The Samurai's Eye|BaseName^Abandoned Wealth|BaseName^The Nurse|BaseName^Gift of Asenath|BaseName^Nook's Crown|BaseName^Immortal Resolve|BaseName^Wealth and Power|BaseName^The Sustenance|BaseName^Pride of the First Ones|BaseName^The Price of Loyalty|BaseName^The Dragon's Heart|BaseName^The Greatest Intentions|BaseName^The Craving|BaseName^The Saint's Treasure|BaseName^The White Knight|BaseName^The Long Con|BaseName^The Escape|BaseName^Unrequited Love|BaseName^Brother's Stash|BaseName^Love Through Ice|BaseName^Deadly Joy|BaseName^Luminous Trove|BaseName^Burning Blood|BaseName^Desecrated Virtue|BaseName^Keeper's Corruption|BaseName^A Note in the Wind|BaseName^The Enlightened|BaseName^The Progeny of Lunaris|BaseName^Council of Cats|BaseName^The Offspring|BaseName^The Artist|BaseName^The Life Thief|BaseName^The Spark and the Flame|BaseName^Hunter's Reward|BaseName^The Strategist|BaseName^The Eye of Terror|BaseName^The Patient|BaseName^Dementophobia|BaseName^Draped in Dreams|BaseName^Ambitious Obsession|BaseName^The Gulf|BaseName^The Soul	:1P_PriorityLoot
+All L21Q23 gems: 	ItemQuality>19,skillgemlevel>19 								:1P_PriorityLoot
+Good L21 gems: 		ClassName^Skill Gem,skillgemlevel>20,BaseName^Purity of Fire|BaseName^Vaal Summon Skeleton|BaseName^Purity of Ice|BaseName^Purity of Lightning|BaseName^Animate Guardian|BaseName^Hatred|BaseName^Anger|BaseName^Haste|BaseName^Zealotry|BaseName^Wrath|BaseName^Vitality|BaseName^Pride|BaseName^Summon Phantasm Support|BaseName^Raise Spectre|BaseName^Toxic Rain|BaseName^Caustic Arrow|BaseName^Elemental Hit|BaseName^Spectral Shield Throw|BaseName^Forbidden Rite|BaseName^Added Cold Damage Support|BaseName^Herald of Thunder|BaseName^Herald of Ice|BaseName^Herald of Purity|BaseName^Multistrike Support|BaseName^Inspiration Support|BaseName^Essence Drain|BaseName^Exsanguinate|BaseName^Ice Trap|BaseName^Efficacy Support|BaseName^Determination|BaseName^Summon Raging Spirit|BaseName^Eye of Winter|BaseName^Malevolence|BaseName^Cast when Damage Taken Support|BaseName^Grace|BaseName^Fireball|BaseName^Freezing Pulse|BaseName^Generosity Support|BaseName^Ice Bite Support|BaseName^Impale Support|BaseName^Increased Area of Effect Support|BaseName^Increased Duration Support|BaseName^Meat Shield Support|BaseName^Predator Support|BaseName^Raise Zombie|BaseName^Ruthless Support|BaseName^Shield Crush|BaseName^Summon Carrion Golem|BaseName^Vicious Projectiles Support|BaseName^Void Manipulation Support|BaseName^Cyclone|BaseName^Fortify Support|BaseName^Minion Damage Support|BaseName^Minion Life Support|BaseName^Spell Echo Support|BaseName^Lesser Multiple Projectiles Support  :1P_PriorityLoot
+Good L20 gems: 		ClassName^Skill Gem,skillgemlevel>19,BaseName^Vaal Haste|BaseName^Vaal Grace|BaseName^Vaal Ancestral Warchief|BaseName^Vaal Discipline|BaseName^Vaal Molten Shell|BaseName^Vaal Righteous Fire|BaseName^Greater Volley Support|BaseName^Discipline|BaseName^Cruelty Support|BaseName^Arrogance Support|BaseName^Increased Critical Damage Support|BaseName^Elemental Damage with Attack Support|BaseName^Brutality Support|BaseName^Chain Support|BaseName^Faster Projectiles Support|BaseName^Greater Multiple Projectiles Support|BaseName^Hypothermia Support|BaseName^Increased Critical Strikes Support|BaseName^Vitality|BaseName^Zealotry|BaseName^Barrage Support|BaseName^Concentrated Effect Suppport|BaseName^Spectral Shield Throw|BaseName^Cold Penetration Support  :1P_PriorityLoot
+Good Q23 gems: 		ClassName^Skill Gem,itemquality>20,BaseName^Temporal Chains|BaseName^Kinetic Bolt|BaseName^Sniper's Mark|BaseName^Galvanic Arrow|BaseName^Hydrosphere|BaseName^Power Charge On Critical Support|BaseName^High-Impact Mine|BaseName^Swift Assembly|BaseName^Lightning Arrow|BaseName^Barrage|BaseName^Vaal Haste|BaseName^Block Chance Reduction|BaseName^Vaal Righteous Fire|BaseName^Bonechill|BaseName^Physical to Lightning|BaseName^Slower Projectiles|BaseName^Berserk|BaseName^Vaal Discipline|BaseName^Vaal Grace|BaseName^Vaal Molten Shell|BaseName^Increased Duration|BaseName^Pinpoint|BaseName^Minefield|BaseName^Less Duration|BaseName^Hextouch|BaseName^Greater Multiple Projectiles|BaseName^Cast when Damage Taken|BaseName^Greater Volley|BaseName^Inspiration|BaseName^Blood Magic|BaseName^Vaal Ancestral Warchief|BaseName^Vitality|BaseName^Determination 			:1P_PriorityLoot
+Other top: 			BaseName^Delirium|path^CurrencyAfflictionShard|path^CurrencyAfflictionFragment|BaseName^Enriched|BaseName^Empower|BaseName^Enlighten|BaseName^Enhance 		:1P_PriorityLoot
 
 // 2N_BlightMaps
 Blighted Maps: 		ClassName=Map,blightedMap,!elderGuardianMap 					:2N_BlightMaps
@@ -523,8 +522,47 @@ Everything else:	ilvl > 0                                                       
             _settingsListNodes.Add(Settings.CurrencyStashTab);
         }
 
+        private readonly Stopwatch _cursorStuckWithGarbageTimer = new Stopwatch();
+
+        private bool IsCursorWithItem()
+        {
+            if (GameController?.Game?.IsPreGame == true) return false;
+            try
+            {
+                var playerInventories = GameController
+                    ?.Game
+                    ?.IngameState
+                    ?.ServerData
+                    ?.PlayerInventories;
+                var cursorItems =
+                    (from playerInventory in playerInventories
+                        select playerInventory?.Inventory
+                        into inventory
+                        where inventory?.InventType == InventoryTypeE.Cursor
+                        select inventory)
+                    .FirstOrDefault();
+                if (cursorItems?.Items?.Count != 1) return false;
+                var cursorItem = cursorItems?.Items?[0];
+                return !string.IsNullOrEmpty(cursorItem?.Path);
+            }
+            catch (Exception e) // ok
+            {
+                return false;
+            }
+        }
+
+        private void UpdateCursorStuckWithGarbageTimer()
+        {
+            if (IsCursorWithItem())
+                _cursorStuckWithGarbageTimer.Start();
+            else if (_cursorStuckWithGarbageTimer.IsRunning) 
+                _cursorStuckWithGarbageTimer.Reset();
+        }
+        
         public override Job Tick()
         {
+            UpdateCursorStuckWithGarbageTimer();
+            
             try
             {
                 if (!stashingRequirementsMet() && Core.ParallelRunner.FindByName("Stashie_DropItemsToStash") != null)
@@ -534,14 +572,19 @@ Everything else:	ilvl > 0                                                       
                 }
             }
             catch (Exception e) { if (Settings.Debug) throw e; }
-            if (Settings.DropHotkey.PressedOnce())
+            
+            if (_cursorStuckWithGarbageTimer.ElapsedMilliseconds > 5000)
             {
-                if (Core.ParallelRunner.FindByName("Stashie_DropItemsToStash") == null)
-                    StartDropItemsToStashCoroutine();
-                else
-                    StopCoroutine("Stashie_DropItemsToStash");
+                StopCoroutine("Stashie_DropItemsToStash");
+                return null;
             }
 
+            if (_cursorStuckWithGarbageTimer.ElapsedMilliseconds < 5000 &&
+                Settings.DropHotkey.PressedOnce() &&
+                Core.ParallelRunner.FindByName("Stashie_DropItemsToStash") == null)
+            {
+                StartDropItemsToStashCoroutine();
+            }
             return null;
         }
 
@@ -746,7 +789,7 @@ Everything else:	ilvl > 0                                                       
                         LogMessage($"Error while waiting for:{waitedItems.Count} items");
                         yield break;
                     }
-                    yield return new WaitTime((int)GameController.IngameState.CurLatency); //maybe replace with Setting option
+                    yield return new WaitTime((int)GameController.ServerData.Latency); //maybe replace with Setting option
                 }*/
                 yield return new WaitFunctionTimed(
                     () => GameController.IngameState.IngameUi.StashElement.AllInventories[_visibleStashIndex] != null,
@@ -825,7 +868,7 @@ Everything else:	ilvl > 0                                                       
                 yield break;
             }
 
-            var delay = (int) GameController.Game.IngameState.ServerData.Latency + Settings.ExtraDelay.Value;
+            var delay = GameController.Game.IngameState.ServerData.Latency + Settings.ExtraDelay.Value;
             var currencyTabVisible = false;
             var inventory = GameController.Game.IngameState.IngameUi.InventoryPanel[InventoryIndex.PlayerInventory];
             var stashItems = inventory.VisibleInventoryItems;
@@ -1020,7 +1063,7 @@ Everything else:	ilvl > 0                                                       
 
         private IEnumerator SplitStack(int amount, Vector2 from, Vector2 to)
         {
-            var delay = (int)GameController.Game.IngameState.ServerData.Latency * 2 + Settings.ExtraDelay;
+            var delay = GameController.Game.IngameState.ServerData.Latency * 2 + Settings.ExtraDelay;
             Input.KeyDown(Keys.ShiftKey);
 
             while (!Input.IsKeyDown(Keys.ShiftKey)) yield return new WaitTime(WhileDelay);
@@ -1361,6 +1404,7 @@ Everything else:	ilvl > 0                                                       
 
                 yield return Wait1Sec;
             }
+            // ReSharper disable once IteratorNeverReturns
         }
 
         private static void VerticalScroll(bool scrollUp, int clicks)
