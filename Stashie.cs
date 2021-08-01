@@ -520,8 +520,6 @@ Everything else:	ilvl > 0                                                       
             _settingsListNodes.Add(Settings.CurrencyStashTab);
         }
 
-        private readonly Stopwatch _cursorStuckWithGarbageTimer = new Stopwatch();
-
         private bool IsCursorWithItem()
         {
             if (GameController?.Game?.IsPreGame == true) return false;
@@ -548,37 +546,27 @@ Everything else:	ilvl > 0                                                       
                 return false;
             }
         }
-
-        private void UpdateCursorStuckWithGarbageTimer()
-        {
-            if (IsCursorWithItem())
-                _cursorStuckWithGarbageTimer.Start();
-            else if (_cursorStuckWithGarbageTimer.IsRunning) 
-                _cursorStuckWithGarbageTimer.Reset();
-        }
         
         public override Job Tick()
         {
-            UpdateCursorStuckWithGarbageTimer();
-            
             if (!stashingRequirementsMet() && Core.ParallelRunner.FindByName("Stashie_DropItemsToStash") != null)
             {
                 StopCoroutine("Stashie_DropItemsToStash");
                 return null;
             }
             
-            if (_cursorStuckWithGarbageTimer.ElapsedMilliseconds > 5000)
+            if (IsCursorWithItem())
             {
                 StopCoroutine("Stashie_DropItemsToStash");
                 return null;
             }
 
-            if (_cursorStuckWithGarbageTimer.ElapsedMilliseconds < 5000 &&
-                Settings.DropHotkey.PressedOnce() &&
+            if (Settings.DropHotkey.PressedOnce() &&
                 Core.ParallelRunner.FindByName("Stashie_DropItemsToStash") == null)
             {
                 StartDropItemsToStashCoroutine();
             }
+
             return null;
         }
 
